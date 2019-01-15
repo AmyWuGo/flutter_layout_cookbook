@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_layout_ledger/model/ViewType.dart';
 
-class ListItem1 extends StatelessWidget {
+class ListItem2 extends StatelessWidget {
 //list item: icon + title + subtitle
 
   static Future launcher(BuildContext context) {
     return Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => ListItem1()),
+      MaterialPageRoute(builder: (context) => ListItem2()),
     );
   }
 
@@ -16,7 +16,7 @@ class ListItem1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(ViewType.VT_LIST_ITEM_ICON_TITLE_SUBTITLE),
+        title: Text(ViewType.VT_LIST_ITEM_TITLE_SUBTITLE_ICON),
       ),
       body: ListView.builder(
           itemCount: 100,
@@ -37,7 +37,7 @@ class ListItem1 extends StatelessWidget {
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
         ),
-        leading: CircleAvatar(
+        trailing: CircleAvatar(
           child: Text("A", style: TextStyle(fontWeight: FontWeight.bold)),
           backgroundColor: Color(0xFF1CA48E),
           foregroundColor: Color(0xFFFFFFFF),
