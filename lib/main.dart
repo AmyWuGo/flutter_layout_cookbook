@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_ledger/model/ViewType.dart';
+import 'package:flutter_layout_ledger/util/localization.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class FlutterLayoutLedgerList extends StatelessWidget {
   var viewList = ViewType.fetchList();
@@ -7,6 +9,15 @@ class FlutterLayoutLedgerList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: [
+        AppLocalizationsDelegate(),
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('en', 'US'), // English
+        const Locale('zh', 'CN'), // Simplified Chinese
+      ],
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // Define the default Brightness and Colors
@@ -31,6 +42,8 @@ class FlutterLayoutLedgerList extends StatelessWidget {
       ),
     );
   }
+
+  //      title: AppLocalizations.of(context).translate['settings'],
 
   ListView makeBody() {
     return ListView.builder(
