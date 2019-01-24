@@ -15,12 +15,11 @@ class BottomNavigationBar1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Flutter Demo",
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(ViewType.VT_BOTTOM_NAVIGATION_BAR),
       ),
-      home: MyBottomNavigationBar1(title: 'Flutter Demo Home Page'),
+      body: MyBottomNavigationBar1(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -64,9 +63,6 @@ class _MyHomePageState extends State<MyBottomNavigationBar1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(ViewType.VT_BOTTOM_NAVIGATION_BAR),
-      ),
       body: _children[_currentIndex], // new
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped, // new

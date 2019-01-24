@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_layout_ledger/ui/listitem/AnimationLinear.dart';
 import 'package:flutter_layout_ledger/ui/listitem/ListItem1.dart';
 import 'package:flutter_layout_ledger/ui/listitem/ListItem2.dart';
 import 'package:flutter_layout_ledger/ui/listitem/BottomNavigationBar1.dart';
@@ -12,6 +13,7 @@ class ViewType {
       "list item: title + subtitle + icon";
 
   static const String VT_BOTTOM_NAVIGATION_BAR = "bottom navigation bar";
+  static const String VT_ANIMATION_LINEAR = "animation linear";
 
   final String type;
 
@@ -21,6 +23,7 @@ class ViewType {
     VT_LIST_ITEM_ICON_TITLE_SUBTITLE,
     VT_LIST_ITEM_TITLE_SUBTITLE_ICON,
     VT_BOTTOM_NAVIGATION_BAR,
+    VT_ANIMATION_LINEAR,
   ];
 
   static List<ViewType> fetchList() {
@@ -39,6 +42,10 @@ class ViewType {
 
       case ViewType.VT_LIST_ITEM_TITLE_SUBTITLE_ICON:
         ListItem2.launcher(context);
+        break;
+
+      case ViewType.VT_ANIMATION_LINEAR:
+        AnimationLinear.launcher(context);
         break;
 
       case ViewType.VT_BOTTOM_NAVIGATION_BAR:
