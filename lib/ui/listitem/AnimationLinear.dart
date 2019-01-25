@@ -31,7 +31,7 @@ class _AnimationLinear extends State<AnimationLinear>
     _iconAnimationController = new AnimationController(
         vsync: this,
         upperBound: 2.0,
-        duration: new Duration(milliseconds: 1000));
+        duration: new Duration(milliseconds: 6000));
 
 //    _iconAnimation = new CurvedAnimation(
 //        parent: _iconAnimationController, curve: Curves.easeInOut);
