@@ -1,10 +1,10 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_layout_ledger/model/ViewType.dart';
 
-class AnimationLinear extends StatelessWidget {
-//list item: icon + title + subtitle
-
+class AnimationLinear extends StatefulWidget {
   static Future launcher(BuildContext context) {
     return Navigator.push(
       context,
@@ -12,40 +12,95 @@ class AnimationLinear extends StatelessWidget {
     );
   }
 
+  AnimationLinear({Key key}) : super(key: key);
+
+  @override
+  _AnimationLinear createState() => _AnimationLinear();
+}
+
+class _AnimationLinear extends State<AnimationLinear>
+    with SingleTickerProviderStateMixin {
+  AnimationController _iconAnimationController;
+  CurvedAnimation _iconAnimation;
+  final myRandom = Random();
+
+  @override
+  void initState() {
+    super.initState();
+
+    _iconAnimationController = new AnimationController(
+        vsync: this,
+        upperBound: 2.0,
+        duration: new Duration(milliseconds: 1000));
+
+//    _iconAnimation = new CurvedAnimation(
+//        parent: _iconAnimationController, curve: Curves.easeInOut);
+    _iconAnimationController.addListener(() => this.setState(() {}));
+//    _iconAnimationController.forward();
+  }
+
+  @override
+  void dispose() {
+    _iconAnimationController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(ViewType.VT_LIST_ITEM_TITLE_SUBTITLE_ICON),
+        title: Text(ViewType.VT_ANIMATION_LINEAR),
       ),
-      body: ListView.builder(
-          itemCount: 100,
-          itemBuilder: (BuildContext content, int index) {
-            return buildBody(content);
-          }),
+      body: buildBody(context),
     );
   }
 
   Widget buildBody(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.fromLTRB(6.0, 12.0, 12.0, 8.0),
-      child: ListTile(
-        title: Text(
-            "Item Item Item Item Item Item Item Item Item Item Item Item "),
-        subtitle: Text(
-          "Item subtitlw Item subtitlw Item subtitlw Item subtitlw Item subtitlw Item subtitlw Item subtitlw Item subtitlw Item subtitlw Item subtitlw Item subtitlw Item subtitlw ",
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
-        ),
-        trailing: CircleAvatar(
-          child: Text("A", style: TextStyle(fontWeight: FontWeight.bold)),
-          backgroundColor: Color(0xFF1CA48E),
-          foregroundColor: Color(0xFFFFFFFF),
+    final int percent = (_iconAnimationController.value * 100.0).round();
+
+    return Stack(
+      children: <Widget>[
+        _getStartAnimationBtn(percent),
+        _getTargetIcon(percent)
+      ],
+    );
+  }
+
+  Positioned _getTargetIcon(int percent) {
+    return Positioned(
+      top: percent + 20.0,
+      left: percent + 20.0,
+      child: Container(
+        height: 28.0,
+        width: 28.0,
+        decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.green),
+      ),
+    );
+  }
+
+  void _startAnimation() {
+    _iconAnimationController.reset();
+    _iconAnimationController.forward();
+  }
+
+  Widget _getStartAnimationBtn(int percent) {
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: InkWell(
+        onTap: () {
+          _startAnimation();
+        },
+        child: Container(
+          margin: const EdgeInsets.fromLTRB(24.0, 8.0, 24.0, 50.0),
+          padding: const EdgeInsets.fromLTRB(40.0, 20.0, 40.0, 20.0),
+          child: Text('$percent%'),
+          decoration: BoxDecoration(
+            shape: BoxShape.rectangle,
+            color: Colors.yellow,
+            borderRadius: new BorderRadius.circular(8.0),
+          ),
         ),
       ),
-      decoration: BoxDecoration(
-          border: Border(
-              bottom: BorderSide(color: const Color(0xffcecece), width: 0.5))),
     );
   }
 }
