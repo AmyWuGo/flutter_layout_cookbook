@@ -36,8 +36,14 @@ class _ViewScaleTransition extends State<ViewScaleTransition>
 
     _iconAnimation = CurvedAnimation(
         parent: _iconAnimationController,
-        curve: new Interval(0.01, 1.0, curve: Curves.bounceInOut));
+        curve:  Curves.elasticInOut);
+//        curve: new Interval(0.01, 1.0, curve: Curves.bounceInOut));
     _iconAnimation.addListener(() => this.setState(() {}));
+    _iconAnimation.addStatusListener((status){
+      if (status == AnimationStatus.completed) {
+        _iconAnimationController.reverse();
+      }
+    });
     _iconAnimationController.forward();
   }
 
@@ -59,7 +65,7 @@ class _ViewScaleTransition extends State<ViewScaleTransition>
 
   Widget buildBody(BuildContext context) {
     final int percent = (_iconAnimationController.value * 100.0).round();
-    width = MediaQuery.of(context).size.width * 0.8;
+    width = MediaQuery.of(context).size.width;
 
     return Stack(
       children: <Widget>[
