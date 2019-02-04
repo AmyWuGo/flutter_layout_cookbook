@@ -6,9 +6,12 @@ import 'package:flutter_layout_ledger/ui/listitem/AnimationEaseIn.dart';
 import 'package:flutter_layout_ledger/ui/listitem/AnimationLinear.dart';
 import 'package:flutter_layout_ledger/ui/listitem/AnimationParty1.dart';
 import 'package:flutter_layout_ledger/ui/listitem/AnimationTransformation.dart';
+import 'package:flutter_layout_ledger/ui/listitem/DismissibleDemo.dart';
+import 'package:flutter_layout_ledger/ui/listitem/FutureWaitClass.dart';
 import 'package:flutter_layout_ledger/ui/listitem/ListItem1.dart';
 import 'package:flutter_layout_ledger/ui/listitem/ListItem2.dart';
 import 'package:flutter_layout_ledger/ui/listitem/BottomNavigationBar1.dart';
+import 'package:flutter_layout_ledger/ui/listitem/SpinningSquare.dart';
 import 'package:flutter_layout_ledger/ui/listitem/ViewScaleTransition.dart';
 
 class ViewType {
@@ -26,6 +29,9 @@ class ViewType {
   static const String VT_ANIMATION_PARTY_1 = "animation party 1";
   static const String VT_ANIMATION_SCALE_TRANSITION = "animation scale transition";
   static const String VT_ANIMATION_TRANSFORMATION = "animation transformation";
+  static const String VT_FUTURE_WAIT = "future wait";
+  static const String VT_DISMISSIBLE = "dismissible";
+  static const String VT_SPINNING_SQUARE = "spinning square";
 
   final String type;
 
@@ -34,7 +40,10 @@ class ViewType {
   static final List<String> _list = [
     VT_LIST_ITEM_ICON_TITLE_SUBTITLE,
     VT_LIST_ITEM_TITLE_SUBTITLE_ICON,
+    VT_SPINNING_SQUARE,
+    VT_DISMISSIBLE,
     VT_BOTTOM_NAVIGATION_BAR,
+    VT_FUTURE_WAIT,
     VT_ANIMATION_SCALE_TRANSITION,
     VT_ANIMATION_TRANSFORMATION,
     VT_ANIMATION_PARTY_1,
@@ -92,6 +101,18 @@ class ViewType {
 
       case ViewType.VT_BOTTOM_NAVIGATION_BAR:
         BottomNavigationBar1.launcher(context);
+        break;
+
+      case ViewType.VT_FUTURE_WAIT:
+        FutureWaitClass.launcher(context);
+        break;
+
+      case ViewType.VT_DISMISSIBLE:
+        DismissibleDemo.launcher(context);
+        break;
+
+      case ViewType.VT_SPINNING_SQUARE:
+        SpinningSquare.launcher(context);
         break;
     }
   }
