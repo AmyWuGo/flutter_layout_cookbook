@@ -15,6 +15,7 @@ import 'package:flutter_layout_ledger/ui/listitem/ListItem2.dart';
 import 'package:flutter_layout_ledger/ui/listitem/BottomNavigationBar1.dart';
 import 'package:flutter_layout_ledger/ui/listitem/SpinningSquare.dart';
 import 'package:flutter_layout_ledger/ui/listitem/ViewScaleTransition.dart';
+import 'package:flutter_layout_ledger/ui/listitem/WorldClock.dart';
 
 class ViewType {
   final String type;
@@ -28,6 +29,7 @@ class ViewType {
       "list item: title + subtitle + icon";
 
   static const String VT_BOTTOM_NAVIGATION_BAR = "bottom navigation bar";
+  static const String VT_WORLD_CLOCK = "world time clock";
   static const String VT_CARD_VIEW_ITEM_1 = "card view item 1";
   static const String VT_ANIMATION_LINEAR = "animation linear";
   static const String VT_ANIMATION_DECELERATE = "animation decelerate";
@@ -61,6 +63,7 @@ class ViewType {
     VT_LIST_ITEM_TITLE_SUBTITLE_ICON,
     VT_BOTTOM_NAVIGATION_BAR,
     VT_CARD_VIEW_ITEM_1,
+    VT_WORLD_CLOCK,
   ];
 
   static final List<String> _animationList = [
@@ -150,6 +153,9 @@ class ViewType {
 
       case ViewType.VT_CARD_VIEW_ITEM_1:
         CardViewItem1.launcher(context);
+        break;
+      case ViewType.VT_WORLD_CLOCK:
+        WorldClock.launcher(context);
         break;
 
       case ViewType.VT_FUTURE_WAIT:
