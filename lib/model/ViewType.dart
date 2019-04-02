@@ -7,6 +7,7 @@ import 'package:flutter_layout_ledger/ui/listitem/AnimationEaseIn.dart';
 import 'package:flutter_layout_ledger/ui/listitem/AnimationLinear.dart';
 import 'package:flutter_layout_ledger/ui/listitem/AnimationParty1.dart';
 import 'package:flutter_layout_ledger/ui/listitem/AnimationTransformation.dart';
+import 'package:flutter_layout_ledger/ui/listitem/CardViewItem1.dart';
 import 'package:flutter_layout_ledger/ui/listitem/DismissibleDemo.dart';
 import 'package:flutter_layout_ledger/ui/listitem/FutureWaitClass.dart';
 import 'package:flutter_layout_ledger/ui/listitem/ListItem1.dart';
@@ -27,6 +28,7 @@ class ViewType {
       "list item: title + subtitle + icon";
 
   static const String VT_BOTTOM_NAVIGATION_BAR = "bottom navigation bar";
+  static const String VT_CARD_VIEW_ITEM_1 = "card view item 1";
   static const String VT_ANIMATION_LINEAR = "animation linear";
   static const String VT_ANIMATION_DECELERATE = "animation decelerate";
   static const String VT_ANIMATION_EASE = "animation ease";
@@ -58,6 +60,7 @@ class ViewType {
     VT_LIST_ITEM_ICON_TITLE_SUBTITLE,
     VT_LIST_ITEM_TITLE_SUBTITLE_ICON,
     VT_BOTTOM_NAVIGATION_BAR,
+    VT_CARD_VIEW_ITEM_1,
   ];
 
   static final List<String> _animationList = [
@@ -97,12 +100,12 @@ class ViewType {
 
       case ViewType.CT_WIDGET_LIST:
         MyListView.launcher(
-            context, _generateList(_widgetList), ViewType.CT_FEATURE_LIST);
+            context, _generateList(_widgetList), ViewType.CT_WIDGET_LIST);
         break;
 
       case ViewType.CT_ANIMATION_LIST:
         MyListView.launcher(
-            context, _generateList(_animationList), ViewType.CT_FEATURE_LIST);
+            context, _generateList(_animationList), ViewType.CT_ANIMATION_LIST);
         break;
 
       case ViewType.VT_LIST_ITEM_ICON_TITLE_SUBTITLE:
@@ -143,6 +146,10 @@ class ViewType {
 
       case ViewType.VT_BOTTOM_NAVIGATION_BAR:
         BottomNavigationBar1.launcher(context);
+        break;
+
+      case ViewType.VT_CARD_VIEW_ITEM_1:
+        CardViewItem1.launcher(context);
         break;
 
       case ViewType.VT_FUTURE_WAIT:
