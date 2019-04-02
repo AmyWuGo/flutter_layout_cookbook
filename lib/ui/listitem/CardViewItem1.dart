@@ -46,19 +46,22 @@ class _MyHomePageState extends State<MyCardViewItem1> {
   }
 
   _getCardItem({int position = 0}) {
-    return Container(
-        margin: const EdgeInsets.fromLTRB(16.0, 10.0, 16.0, 10.0),
-        decoration: BoxDecoration(
-            borderRadius: new BorderRadius.circular(8.0),
-            border: Border.all(color: const Color(0xff76C7F2), width: 3.0)),
-        padding: const EdgeInsets.fromLTRB(4.0, 16.0, 4.0, 16.0),
-        child: _getChild(position));
+    return InkWell(
+        onTap: () {
+        },
+        child: Container(
+            margin: const EdgeInsets.fromLTRB(16.0, 10.0, 16.0, 10.0),
+            decoration: BoxDecoration(
+                borderRadius: new BorderRadius.circular(8.0),
+                border: Border.all(color: const Color(0xff76C7F2), width: 3.0)),
+            padding: const EdgeInsets.fromLTRB(4.0, 16.0, 4.0, 16.0),
+            child: _getChild(position)));
   }
 
   _getChild(int position) {
     return ListTile(
       title: Text(
-          "Flutter is an open-source mobile application development framework.",
+          (position % 2 == 0? "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa":"bbb"),
           style: TextStyle(
               fontSize: 20.0,
               color: const Color(0xff625E5E),
