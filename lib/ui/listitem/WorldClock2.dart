@@ -3,12 +3,13 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_layout_ledger/model/ViewType.dart';
+import 'package:intl/intl.dart';
 
-class WorldClock extends StatelessWidget {
+class WorldClock2 extends StatelessWidget {
   static Future launcher(BuildContext context) {
     return Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => WorldClock()),
+      MaterialPageRoute(builder: (context) => WorldClock2()),
     );
   }
 
@@ -16,15 +17,15 @@ class WorldClock extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(ViewType.VT_WORLD_CLOCK),
+        title: Text(ViewType.VT_WORLD_CLOCK_2),
       ),
-      body: MyWorldClock(title: 'Flutter Demo Home Page'),
+      body: MyWorldClock2(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class MyWorldClock extends StatefulWidget {
-  MyWorldClock({Key key, this.title}) : super(key: key);
+class MyWorldClock2 extends StatefulWidget {
+  MyWorldClock2({Key key, this.title}) : super(key: key);
 
   final String title;
 
@@ -32,7 +33,7 @@ class MyWorldClock extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyWorldClock> {
+class _MyHomePageState extends State<MyWorldClock2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,27 +68,28 @@ class _MyHomePageState extends State<MyWorldClock> {
   }
 
   _getTitle(int position) {
-    return ListTile(
-      title: Text((position % 2 == 0 ? "TOKYO" : "CHINA"),
-          maxLines: 1,
-          style: TextStyle(
-              fontSize: 32.0,
-              color: const Color(0xff58B7EA),
-              fontWeight: FontWeight.bold)),
-      trailing: _getNum(position),
+    return Row(
+      children: [
+        const SizedBox(width: 24),
+        _getNum(position),
+        const SizedBox(width: 24),
+        Text((position % 2 == 0 ? "TOKYO" : "CHINA"),
+            maxLines: 1,
+            style: TextStyle(
+                fontSize: 32.0,
+                color: const Color(0xff58B7EA),
+                fontWeight: FontWeight.bold)),
+      ],
     );
   }
 
   _getTime() {
     return Container(
         margin: const EdgeInsets.fromLTRB(0.0, 16.0, 0.0, 0.0),
-
         alignment: Alignment.center,
         padding: const EdgeInsets.fromLTRB(0.0, 32.0, 0.0, 32.0),
         color: const Color(0xff58B7EA),
-
-
-        child: Text("10:10",
+        child: Text(DateFormat('H : mm').format(DateTime.now()),
             style: TextStyle(
                 fontSize: 36.0,
                 color: const Color(0xffF7F7F7),
